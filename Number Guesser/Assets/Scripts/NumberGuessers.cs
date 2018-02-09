@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NumberGuessers : MonoBehaviour
 {
-	int max = 1000, min = 1, guess = 500;
+	int max, min, guess;
 
 	// Use this for initialization
 	void Start ()
@@ -21,19 +21,24 @@ public class NumberGuessers : MonoBehaviour
 			print ("up was pressed");
 			min = guess;
 			NextGuess ();
-
+			 
 		} else if (Input.GetKeyDown ("down")) {
 			print ("down was pressed");
 			max = guess;
 			NextGuess ();
 
-		} else if (Input.GetKeyDown ("space"))
+		} else if (Input.GetKeyDown ("space")){
 			print ("I won.");
-
+			StartGame ();
+		}
 	}
 
-	void StartGame(){
-		max += 1;
+	void StartGame ()
+	{
+		max = 1000; 
+		min = 1; 
+		guess = 500;
+		print ("--------------------------New Game has started--------------------------");
 		print ("Welcome to the number guesser.");
 		print ("Pick a number in your head, don't tell me."); 
 
@@ -42,10 +47,12 @@ public class NumberGuessers : MonoBehaviour
 
 		print ("Is the number higher or lower than " + guess + "?");
 		print ("Press up for higher, down for lower and space for equals.");
+		max += 1;
 	}
 
-	void NextGuess(){
-		guess = (max + min)/2;
+	void NextGuess ()
+	{
+		guess = (max + min) / 2;
 		print ("Is the the number higher or lower than, " + guess + "?");
 		print ("Press up for higher, down for lower and space for equals.");
 	}
